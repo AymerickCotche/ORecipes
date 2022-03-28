@@ -1,10 +1,16 @@
 // Import NPM
-import PropTypes from 'prop-types';
+import * as PropTypes from 'prop-types';
+
+import * as React from 'react';
 
 // Imports locaux
 import './style.scss';
 
-const Instructions = ({ steps }) => (
+type InstructionsProps = {
+  steps: IRecipe['instructions'],
+};
+
+const Instructions = ({ steps }: InstructionsProps) => (
   <ol className="steps">
     {steps.map((instruction) => (
       <li key={instruction} className="step">

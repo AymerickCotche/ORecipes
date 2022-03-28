@@ -1,7 +1,7 @@
 /* eslint-disable arrow-body-style */
 // == Import : npm
 import * as React from 'react';
-import { Navigate } from 'react-router-dom';
+import { Navigate, useParams } from 'react-router-dom';
 import { useAppSelector } from 'src/hooks/typedHooks';
 
 import { findRecipe } from 'src/selectors/recipes';
@@ -19,7 +19,8 @@ import './style.scss';
 
 // == Composant
 function Recipe() {
-  const recipe = useAppSelector((state) => findRecipe(state.recipes.list, 'crepes-raffinees'));
+  const { name } = useParams();
+  const recipe = useAppSelector((state) => findRecipe(state.recipes.list, name));
 
   if (!recipe) {
     return <Navigate to="/error" replace />;

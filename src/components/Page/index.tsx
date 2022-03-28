@@ -1,7 +1,11 @@
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
 
-const Page = ({ children }) => (
+interface PageProps {
+  children: React.ReactNode
+}
+
+const Page = ({ children }: PageProps) => (
   <main className="page">
     {children}
   </main>

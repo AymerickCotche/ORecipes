@@ -1,12 +1,15 @@
 // == Import : npm
 import * as React from 'react';
-import PropTypes from 'prop-types';
+import * as PropTypes from 'prop-types';
 
 // == Import : local
 import './style.scss';
 
+type IngredientsProps = {
+  list: IRecipe['ingredients'],
+};
 // == Composant
-const Ingredients = ({ list }) => (
+const Ingredients = ({ list }: IngredientsProps) => (
   <ul className="ingredients">
     {list.map((ingredient) => (
       <li className="ingredient" key={ingredient.id}>

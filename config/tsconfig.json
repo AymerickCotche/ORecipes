@@ -12,5 +12,5 @@
       "src/*": ["*"]
     }
   },
-  "include": ["../src/**/*", "./custom.d.ts"]
+  "include": ["../src/**/*", "./custom.d.ts", "./type.d.ts"]
 }

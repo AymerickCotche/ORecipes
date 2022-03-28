@@ -6,13 +6,20 @@ import Card from 'src/components/Card';
 
 import './style.scss';
 
-const Content = ({ title, text, recipes }) => (
+interface ContentProps {
+  title: string,
+  text: string,
+  recipes: RecipeState['list']
+}
+
+const Content = ({ title, text, recipes }: ContentProps) => (
   <section className="content">
     <h1 className="content-title">{title}</h1>
     <p className="content-text">{text}</p>
     {recipes && (
       <div className="content-list">
         {recipes.map((recipe) => (
+          // eslint-disable-next-line react/jsx-props-no-spreading
           <Card key={recipe.id} {...recipe} />
         ))}
       </div>

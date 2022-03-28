@@ -2,7 +2,7 @@
 // == Import : npm
 import * as React from 'react';
 import { Navigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useAppSelector } from 'src/hooks/typedHooks';
 
 import { findRecipe } from 'src/selectors/recipes';
 
@@ -19,10 +19,10 @@ import './style.scss';
 
 // == Composant
 function Recipe() {
-  const recipe = useSelector((state) => findRecipe(state.recipes.list, 'crepes-raffinees'));
+  const recipe = useAppSelector((state) => findRecipe(state.recipes.list, 'crepes-raffinees'));
 
   if (!recipe) {
-    return <Navigate to="/error" replace={true} />;
+    return <Navigate to="/error" replace />;
   }
   return (
     <Page>

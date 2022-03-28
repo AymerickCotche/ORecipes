@@ -4,7 +4,7 @@ import * as React from 'react';
 import Menu from 'src/components/Menu';
 import Home from 'src/components/Home';
 import Loading from './Loading';
-import './styles.css';
+import './style.scss';
 
 const App = (props: any) => {
   const { loading } = props;

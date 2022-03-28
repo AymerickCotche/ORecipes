@@ -1,14 +1,21 @@
 // == Import : npm
 import * as React from 'react';
-import PropTypes from 'prop-types';
+import * as PropTypes from 'prop-types';
 
 // == Import : local
 import './style.scss';
 
+type HeaderProps = {
+  name: IRecipe['title'],
+  thumbnail: IRecipe['thumbnail'],
+  author: IRecipe['author'],
+  difficulty: IRecipe['difficulty']
+};
+
 // == Composant
 const Header = ({
   name, thumbnail, author, difficulty,
-}) => (
+}: HeaderProps) => (
   <header className="presentation">
     <img
       src={thumbnail}

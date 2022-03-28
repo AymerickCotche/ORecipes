@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { useSelector } from 'react-redux';
+import { useAppSelector } from '../../hooks/typedHooks';
 
 import './style.scss';
 
 const Menu = () => {
-  const recipes = useSelector((state) => state.recipes);
+  const recipes = useAppSelector((state) => state.recipes.list);
   return (
     <nav className="menu">
       <a

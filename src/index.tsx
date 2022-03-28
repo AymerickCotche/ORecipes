@@ -1,6 +1,6 @@
 // import * as _ from 'lodash';
 import * as React from 'react';
-import ReactDom from 'react-dom';
+import * as ReactDom from 'react-dom';
 
 import { Provider } from 'react-redux';
 

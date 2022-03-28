@@ -1,4 +1,5 @@
 import { createStore, applyMiddleware, compose } from 'redux';
+import recipesMW from 'src/middlewares/recipes';
 
 import reducer from 'src/reducers';
 
@@ -11,7 +12,7 @@ declare global {
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const enhancers = composeEnhancers(
-  applyMiddleware(),
+  applyMiddleware(recipesMW),
 );
 
 const store = createStore(reducer, enhancers);

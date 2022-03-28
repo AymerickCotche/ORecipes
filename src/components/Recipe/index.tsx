@@ -19,9 +19,11 @@ import './style.scss';
 
 // == Composant
 function Recipe() {
-  const { name } = useParams();
-  const recipe = useAppSelector((state) => findRecipe(state.recipes.list, name));
-
+  const { slug } = useParams();
+  const recipe = useAppSelector((state) => {
+    console.log(state);
+    return findRecipe(state.recipes.list, slug);
+  });
   if (!recipe) {
     return <Navigate to="/error" replace />;
   }

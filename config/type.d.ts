@@ -23,7 +23,8 @@ interface IRecipe {
 }
 
 type RecipeState = {
-  list: IRecipe[]
+  list: IRecipe[],
+  loading: boolean,
 }
 
 type UserState = {
@@ -32,5 +33,6 @@ type UserState = {
 
 type RecipeAction = {
   type?: string,
-  recipe?: IRecipe
+  recipe?: IRecipe,
+  recipes?: IRecipe[]
 }

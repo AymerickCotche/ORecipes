@@ -5,6 +5,9 @@ import {
   Routes,
   Route,
 } from 'react-router-dom';
+import { useEffect } from 'react';
+import { useAppDispatch, useAppSelector } from 'src/hooks/typedHooks';
+import { askRecipes } from 'src/actions/recipes';
 import Menu from 'src/components/Menu';
 import Home from 'src/components/Home';
 import Recipe from 'src/components/Recipe';
@@ -13,7 +16,11 @@ import Loading from './Loading';
 import './style.scss';
 
 const App = (props: any) => {
-  const { loading } = props;
+  const dispatch = useAppDispatch();
+  const loading = useAppSelector((state) => state.recipes.loading);
+  useEffect(() => {
+    dispatch(askRecipes());
+  }, []);
   if (loading) {
     return <Loading />;
   }
@@ -26,7 +33,7 @@ const App = (props: any) => {
           element={<Home />}
         />
         <Route
-          path="/recipe/:name"
+          path="/recipe/:slug"
           // eslint-disable-next-line react/no-children-prop
           element={<Recipe />}
         />

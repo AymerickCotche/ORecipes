@@ -1,26 +1,27 @@
 import * as React from 'react';
+import { NavLink } from 'react-router-dom';
 import { useAppSelector } from '../../hooks/typedHooks';
-
 import './style.scss';
 
 const Menu = () => {
   const recipes = useAppSelector((state) => state.recipes.list);
+  const getActiveClass = ({ isActive }: { isActive: boolean}) => (isActive ? 'menu-link menu-link--active' : 'menu-link');
   return (
     <nav className="menu">
-      <a
-        className="menu-link menu-link--active"
-        href="/"
+      <NavLink
+        className={getActiveClass}
+        to="/"
       >
         Accueil
-      </a>
+      </NavLink>
       {recipes.map((recipe) => (
-        <a
+        <NavLink
           key={recipe.id}
-          className="menu-link"
-          href={`/recipe/${recipe.slug}`}
+          className={getActiveClass}
+          to={`/recipe/${recipe.slug}`}
         >
           {recipe.title}
-        </a>
+        </NavLink>
       ))}
     </nav>
   );

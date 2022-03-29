@@ -28,11 +28,23 @@ type RecipeState = {
 }
 
 type UserState = {
-  logged: boolean,
-}
+  isLogged: boolean,
+  email: string,
+  password: string,
+  emailInput: string,
+  passwordInput: string,
+  loggedMessage: string,
+};
+
 
 type RecipeAction = {
   type?: string,
   recipe?: IRecipe,
+  recipes?: IRecipe[]
+}
+
+type UserAction = {
+  type?: string,
+  input?: { email?: string } | { password?: string},
   recipes?: IRecipe[]
 }

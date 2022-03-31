@@ -20,10 +20,8 @@ import './style.scss';
 // == Composant
 function Recipe() {
   const { slug } = useParams();
-  const recipe = useAppSelector((state) => {
-    console.log(state);
-    return findRecipe(state.recipes.list, slug);
-  });
+  const recipe = useAppSelector((state) => findRecipe(state.recipes.list, slug));
+  console.log(recipe);
   if (!recipe) {
     return <Navigate to="/error" replace />;
   }

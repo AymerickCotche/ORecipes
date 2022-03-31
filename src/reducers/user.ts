@@ -1,12 +1,12 @@
-import { CHANGE_FIELD } from 'src/actions/user';
+import { CHANGE_FIELD, LOGIN_SUCCESS, DO_LOGOUT } from 'src/actions/user';
 
 export const initialState = {
-  isLogged: false,
+  logged: false,
   email: '',
   password: '',
-  emailInput: '',
-  passwordInput: '',
-  loggedMessage: 'Bienvenue',
+  loggedMessage: 'Bienvenue ',
+  pseudo: '',
+  token: '',
 };
 
 const reducer = (state: UserState = initialState, action: UserAction = {}) => {
@@ -15,6 +15,21 @@ const reducer = (state: UserState = initialState, action: UserAction = {}) => {
       return {
         ...state,
         ...action.input,
+      };
+    }
+    case LOGIN_SUCCESS: {
+      return {
+        ...state,
+        ...action.payload,
+        email: '',
+        password: '',
+        loggedMessage: state.loggedMessage + action.payload.pseudo,
+      };
+    }
+    case DO_LOGOUT: {
+      localStorage.removeItem('token');
+      return {
+        ...initialState,
       };
     }
     default:

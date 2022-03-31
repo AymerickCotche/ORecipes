@@ -22,13 +22,10 @@ module.exports = {
     filename: 'js/[name].[contenthash].js',
   },
   resolve: {
-    extensions: ['', '.js', '.jsx', '.tsx', '.ts'],
     plugins: [
-      new TsconfigPathsPlugin({
-        configFile: path.resolve('./config/tsconfig.json'),
-        extensions: ['', '.js', '.jsx', '.tsx', '.ts'],
-      }),
+      new TsconfigPathsPlugin(),
     ],
+    extensions: ['', '.js', '.jsx', '.tsx', '.ts'],
   },
   plugins: [
     new webpack.DefinePlugin({
@@ -57,9 +54,7 @@ module.exports = {
         use: [
           {
             loader: 'ts-loader',
-            options: {
-              configFile: path.resolve('./config/tsconfig.json'), // CORRECT
-            },
+      
           },
         ],
 

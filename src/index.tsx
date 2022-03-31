@@ -8,16 +8,19 @@ import {
 import { Provider } from 'react-redux';
 
 import App from 'src/components/App';
-import store from 'src/store';
+import store from './store';
 
-const rootReactElement = (
-  <Provider store={store}>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
-  </Provider>
+ReactDom.render(
+  (
+    <Provider store={store}>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </Provider>
+  ),
+  document.getElementById('root') || document.createElement('div'),
 );
 
-const target = document.getElementById('root');
+// const target = document.getElementById('root') || document.createElement('div');
 
-ReactDom.render(rootReactElement, target);
+// ReactDom.render(rootReactElement, target);

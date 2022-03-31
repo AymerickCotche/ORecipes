@@ -1,6 +1,7 @@
 import * as React from 'react';
-import * as PropTypes from 'prop-types';
+// import * as PropTypes from 'prop-types';
 import { useAppSelector, useAppDispatch } from 'src/hooks/typedHooks';
+import { doLogin, doLogout } from 'src/actions/user';
 import Field from './Field';
 
 import './style.scss';
@@ -10,17 +11,21 @@ const LoginForm = () => {
   const {
     email,
     password,
-    isLogged,
+    logged,
     loggedMessage,
   } = useAppSelector((state) => state.user);
   const handleSubmit = (evt: React.SyntheticEvent) => {
     evt.preventDefault();
-    // handleLogin();
+    dispatch(doLogin());
+  };
+  const handleLogout = (evt: React.SyntheticEvent) => {
+    evt.preventDefault();
+    dispatch(doLogout());
   };
 
   return (
     <div className="login-form">
-      {isLogged && (
+      {logged && (
         <div className="login-form-logged">
           <p className="login-form-message">
             {loggedMessage}
@@ -28,13 +33,13 @@ const LoginForm = () => {
           <button
             type="button"
             className="login-form-button"
-            // onClick={handleLogout}
+            onClick={handleLogout}
           >
             Déconnexion
           </button>
         </div>
       )}
-      {!isLogged && (
+      {!logged && (
 
         <form autoComplete="off" className="login-form-element" onSubmit={handleSubmit}>
           <Field
@@ -51,6 +56,7 @@ const LoginForm = () => {
           <button
             type="submit"
             className="login-form-button"
+            onClick={handleSubmit}
           >
             OK
           </button>

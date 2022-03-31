@@ -1,7 +1,7 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import recipesMW from 'src/middlewares/recipes';
-
-import reducer from 'src/reducers';
+import logginMW from 'src/middlewares/user';
+import rootReducer from 'src/reducers';
 
 declare global {
   interface Window {
@@ -12,10 +12,10 @@ declare global {
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const enhancers = composeEnhancers(
-  applyMiddleware(recipesMW),
+  applyMiddleware(recipesMW, logginMW),
 );
 
-const store = createStore(reducer, enhancers);
+const store = createStore(rootReducer, enhancers);
 
 export default store;
 

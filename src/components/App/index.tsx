@@ -1,5 +1,3 @@
-import * as PropTypes from 'prop-types';
-
 import * as React from 'react';
 import {
   Routes,
@@ -8,6 +6,7 @@ import {
 import { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from 'src/hooks/typedHooks';
 import { askRecipes } from 'src/actions/recipes';
+import { fetchUser } from 'src/actions/user';
 import Menu from 'src/components/Menu';
 import Home from 'src/components/Home';
 import Recipe from 'src/components/Recipe';
@@ -15,12 +14,15 @@ import Error from 'src/components/Error';
 import Loading from './Loading';
 import './style.scss';
 
-const App = (props: any) => {
+const App = () => {
   const dispatch = useAppDispatch();
   const loading = useAppSelector((state) => state.recipes.loading);
+
   useEffect(() => {
     dispatch(askRecipes());
+    dispatch(fetchUser());
   }, []);
+
   if (loading) {
     return <Loading />;
   }
@@ -34,7 +36,6 @@ const App = (props: any) => {
         />
         <Route
           path="/recipe/:slug"
-          // eslint-disable-next-line react/no-children-prop
           element={<Recipe />}
         />
         <Route
@@ -46,11 +47,4 @@ const App = (props: any) => {
   );
 };
 
-App.propTypes = {
-  loading: PropTypes.bool,
-};
-
-App.defaultProps = {
-  loading: false,
-};
 export default App;

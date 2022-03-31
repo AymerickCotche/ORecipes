@@ -2,7 +2,7 @@ import { ASK_RECIPES, GET_RECIPES } from 'src/actions/recipes';
 
 export const initialState: RecipeState = {
   list: [],
-  loading: false,
+  loading: true,
 };
 
 const reducer = (state: RecipeState = initialState, action: RecipeAction = {}) => {

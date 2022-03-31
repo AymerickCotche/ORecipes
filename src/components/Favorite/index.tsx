@@ -1,12 +1,18 @@
 import * as React from 'react';
-
+import { useEffect } from 'react';
+import { useAppSelector, useAppDispatch } from 'src/hooks/typedHooks';
+import { fetchFav } from 'src/actions/recipes';
 import Page from 'src/components/Page';
 import AppHeader from 'src/components/AppHeader';
 import Content from 'src/components/Content';
-import { useAppSelector } from '../../hooks/typedHooks';
 
 const Favorite = () => {
-  const recipes = useAppSelector((state) => state.recipes.list);
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(fetchFav());
+  }, []);
+  const recipes = useAppSelector((state) => state.recipes.favorites);
   return (
     <Page>
       <AppHeader />

@@ -25,6 +25,7 @@ interface IRecipe {
 type RecipeState = {
   list: IRecipe[],
   loading: boolean,
+  favorites: IRecipe[]
 }
 
 type UserState = {

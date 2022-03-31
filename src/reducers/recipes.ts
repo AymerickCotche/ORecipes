@@ -1,8 +1,9 @@
-import { ASK_RECIPES, GET_RECIPES } from 'src/actions/recipes';
+import { ASK_RECIPES, GET_RECIPES, SAVE_FAV } from 'src/actions/recipes';
 
 export const initialState: RecipeState = {
   list: [],
   loading: true,
+  favorites: [],
 };
 
 const reducer = (state: RecipeState = initialState, action: RecipeAction = {}) => {
@@ -18,6 +19,12 @@ const reducer = (state: RecipeState = initialState, action: RecipeAction = {}) =
         ...state,
         list: action.recipes,
         loading: false,
+      };
+    }
+    case SAVE_FAV: {
+      return {
+        ...state,
+        favorites: action.recipes,
       };
     }
     default:

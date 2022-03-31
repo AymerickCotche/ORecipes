@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import { Middleware } from 'redux';
 import axios from 'axios';
-import { DO_LOGIN, loginSuccess, FETCH_USER } from 'src/actions/user';
+import { DO_LOGIN, loginSuccess, FETCH_USER, DO_LOGOUT } from 'src/actions/user';
 
 const logginMW: Middleware = (store) => (next) => (action) => {
   switch (action.type) {
@@ -38,7 +38,11 @@ const logginMW: Middleware = (store) => (next) => (action) => {
       }
       break;
     }
-    // eslint-disable-next-line no-case-declarations
+    case DO_LOGOUT: {
+      localStorage.removeItem('token');
+      next(action);
+      break;
+    }
     default:
       next(action);
   }

@@ -10,6 +10,7 @@ import { fetchUser } from 'src/actions/user';
 import Menu from 'src/components/Menu';
 import Home from 'src/components/Home';
 import Recipe from 'src/components/Recipe';
+import Favorite from 'src/components/Favorite';
 import Error from 'src/components/Error';
 import Loading from './Loading';
 import './style.scss';
@@ -37,6 +38,10 @@ const App = () => {
         <Route
           path="/recipe/:slug"
           element={<Recipe />}
+        />
+        <Route
+          path="/favorite"
+          element={<Favorite />}
         />
         <Route
           path="*"

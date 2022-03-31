@@ -2,6 +2,8 @@ import * as React from 'react';
 import {
   Routes,
   Route,
+  Navigate,
+  useLocation,
 } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from 'src/hooks/typedHooks';
@@ -18,7 +20,13 @@ import './style.scss';
 const App = () => {
   const dispatch = useAppDispatch();
   const loading = useAppSelector((state) => state.recipes.loading);
+  const isLogged = useAppSelector((state) => state.user.logged);
 
+  const location = useLocation();
+
+  useEffect(() => {
+    window.scroll(0, 0);
+  }, [location]);
   useEffect(() => {
     dispatch(askRecipes());
     dispatch(fetchUser());
@@ -41,7 +49,7 @@ const App = () => {
         />
         <Route
           path="/favorite"
-          element={<Favorite />}
+          element={isLogged ? <Favorite /> : <Navigate to="/" replace />}
         />
         <Route
           path="*"

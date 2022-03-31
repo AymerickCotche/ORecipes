@@ -1,7 +1,12 @@
 import _ from 'lodash';
 import { Middleware } from 'redux';
 import axios from 'axios';
-import { DO_LOGIN, loginSuccess, FETCH_USER, DO_LOGOUT } from 'src/actions/user';
+import {
+  DO_LOGIN,
+  loginSuccess,
+  FETCH_USER,
+  DO_LOGOUT,
+} from 'src/actions/user';
 
 const logginMW: Middleware = (store) => (next) => (action) => {
   switch (action.type) {
